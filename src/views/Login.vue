@@ -71,8 +71,12 @@
     },
     methods:{
       submitForm(formName){
+        console.log(formName)  // loginForm 字符串
         this.$refs[formName].validate(valid=>{
           if(valid){
+            console.log(this.$refs[formName]) // VueComponent 对象
+            console.log(this.loginForm)  // 一个包含 4个参数的对象
+            console.log(qs.stringify(this.loginForm)) // username=admin&password=markerhub&code=11111&token=Ey%5DXI%5DdF%28Dpj%2AhY%23qbvGyHgiv8vpQ9%5Ed
             this.$axios.post('/login?'+qs.stringify(this.loginForm)).then(
                 res=>{
                   console.log(res.data)
