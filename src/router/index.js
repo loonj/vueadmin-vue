@@ -11,8 +11,8 @@ const routes = [
     component: ()=>import('../views/Index')
   },
   {
-    path: '/login',
-    name: 'Logiin',
+    path: '/',
+    name: 'Login',
     component: Login
   }
 ]
