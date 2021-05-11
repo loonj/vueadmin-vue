@@ -7,6 +7,7 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import request from "./axios";
 require("./mock") //引入mock数据，关闭则注释该行
+// import mock from './mock' 这么写也可以
 
 Vue.use(Element)
 //Vue.prototype.$axios=axios
