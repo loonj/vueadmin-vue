@@ -87,6 +87,13 @@
               if(res.data.code===0){
                 const jwt=res.data.data.session_id
                 this.$store.commit("SET_TOKEN", jwt)
+                //成功登录的用户
+                let loginUser={
+                  id: res.data.data.phone_no,
+                  username: res.data.data.name,
+                  avatar: res.data.data.img_url
+                }
+                sessionStorage.setItem("loginUser",JSON.stringify(loginUser))
                 this.$router.push("/index")
               }
             }).catch(err=>{
