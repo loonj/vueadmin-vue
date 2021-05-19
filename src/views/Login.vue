@@ -85,6 +85,7 @@
             console.log(req)
             loginApi(req).then(res=>{
               if(res.data.code===0){
+                console.log("test....")
                 const jwt=res.data.data.session_id
                 this.$store.commit("SET_TOKEN", jwt)
                 //成功登录的用户
@@ -94,7 +95,8 @@
                   avatar: res.data.data.img_url
                 }
                 sessionStorage.setItem("loginUser",JSON.stringify(loginUser))
-                this.$router.push("/index")
+                console.log("logined..")
+                this.$router.push("/")
               }
             }).catch(err=>{
               this.getCaptcha();

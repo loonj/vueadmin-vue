@@ -99,17 +99,20 @@ Mock.mock(RegExp('/sys/menu/nav'), 'get', () => {
 			children: [
 				{
 					name: 'SysDict',
-					title: '数字字典',
+					title: '数字字典2345',
 					icon: 'el-icon-s-order',
 					path: '/sys/dicts',
-					component: '',
+					component: 'sys/Dict',
 					children: []
 				},
 			]
 		}
 	]
 
-	let authoritys = ['sys:user:list', "sys:user:save", "sys:user:delete"]
+	//let authoritys = ['sys:user:list', "sys:user:save", "sys:user:delete"]
+
+	//权限数据
+	let authoritys = ['SysUser', "SysUser:save"]
 
 	Result.data = {
 		nav: nav,

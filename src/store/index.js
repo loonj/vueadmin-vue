@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import menus from './modules/menus'
 
 Vue.use(Vuex)
 
@@ -16,10 +17,12 @@ export default new Vuex.Store({
       state.token=''
       localStorage.removeItem("token")
       sessionStorage.removeItem("loginUser")
+      sessionStorage.removeItem("hasRoute")
     }
   },
   actions: {
   },
   modules: {
+    menus
   }
 })
