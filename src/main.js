@@ -6,6 +6,8 @@ import Element from 'element-ui'
 //import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 import request from "./axios";
+import gobal from "./globalFun"
+
 require("./mock") //引入mock数据，关闭则注释该行
 // import mock from './mock' 这么写也可以
 

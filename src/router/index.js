@@ -29,13 +29,22 @@ const routes = [{
     name: 'Home',
     component: Home,
     children: [{
-      path: '/index',
-      name: 'Index',
-      meta: {
-        title: '首页'
+        path: '/index',
+        name: 'Index',
+        meta: {
+          title: '首页'
+        },
+        component: () => import('@/views/Index.vue')
       },
-      component: () => import('@/views/Index.vue')
-    }]
+      {
+        path: '/userCenter',
+        name: 'UserCenter',
+        meta: {
+          title: '用户中心'
+        },
+        component: () => import('@/views/UserCenter.vue')
+      }
+    ]
   },
   {
     path: '/login',
@@ -51,7 +60,7 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach( async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   let hasRoute = store.state.menus.hasRoute
   let menus = store.state.menus.menuList
   let token = localStorage.getItem("token")
@@ -77,7 +86,7 @@ router.beforeEach( async (to, from, next) => {
     console.log(hasRoute)
     console.log(newRoutes)
 
-    const res=await axios.get("/sys/menu/nav")
+    const res = await axios.get("/sys/menu/nav")
 
     store.commit("setMenuList", res.data.data.nav)
     console.log(store.state.menus.menuList)
@@ -89,7 +98,7 @@ router.beforeEach( async (to, from, next) => {
     console.log(store.state.menus.menuList)
     // 动态绑定路由
     res.data.data.nav.forEach(menu => {
-      console.log("开始加路由 "+menu)
+      console.log("开始加路由 " + menu)
       if (menu.children) {
         menu.children.forEach(e => {
           // 转成路由
@@ -104,18 +113,20 @@ router.beforeEach( async (to, from, next) => {
       }
     })
     console.log("22222222222222222")
-    
+
     console.log(newRoutes)
-    console.log(to.path)   ///index
+    console.log(to.path) ///index
     router.addRoutes(newRoutes)
     store.commit("changeRouteStatus", true)
-    hasRoute=store.state.menus.hasRoute
+    hasRoute = store.state.menus.hasRoute
     console.log(hasRoute)
-    next({path: to.path})
-   
-  }else{
+    next({
+      path: to.path
+    })
+
+  } else {
     console.log("已经有路由了----------------")
-    console.log(to.path)  ///index
+    console.log(to.path) ///index
     next()
   }
 })

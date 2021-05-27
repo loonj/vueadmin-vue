@@ -15,6 +15,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :underline="false">
                 <router-link :to="{name: 'UserCenter'}">个人中心</router-link>
+                <!-- <router-link :to="{path: '/sys/users'}">个人中心</router-link> -->
               </el-dropdown-item>
               <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
             </el-dropdown-menu>
@@ -24,6 +25,7 @@
         </div>
       </el-header>
       <el-main>
+        <Tabs></Tabs>
         <div style="margin: 0 15px; background-color:#239382">
           <router-view></router-view>
         </div>
@@ -36,11 +38,12 @@
 <script>
 
   import SideMenu from './inc/SideMenu'
+  import Tabs from './inc/Tabs'
 
   export default {
     name: 'Home',
     components: {
-      SideMenu
+      SideMenu,Tabs
     },
     data(){
       return{
